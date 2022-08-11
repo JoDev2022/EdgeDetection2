@@ -50,6 +50,7 @@ import org.opencv.imgproc.Imgproc;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 import java.util.Stack;
 
 /**
@@ -292,7 +293,12 @@ public class ScanActivity extends AppCompatActivity implements IScanner, View.On
 
         String path = ScanUtils.saveToInternalMemory(croppedBitmap, ScanConstants.IMAGE_DIR,
                 ScanConstants.IMAGE_NAME, ScanActivity.this, 90)[0];
-        setResult(Activity.RESULT_OK, new Intent().putExtra(ScanConstants.SCANNED_RESULT, path));
+
+        Intent intent = new Intent();
+        intent.putExtra(ScanConstants.SCANNED_RESULT, path);
+        intent.putExtra("id", getIntent().getStringExtra("id"));
+
+        setResult(Activity.RESULT_OK, intent);
         //bitmap.recycle();
         System.gc();
         finish();
