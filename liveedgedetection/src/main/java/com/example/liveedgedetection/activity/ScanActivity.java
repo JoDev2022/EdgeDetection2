@@ -296,7 +296,8 @@ public class ScanActivity extends AppCompatActivity implements IScanner, View.On
 
         Intent intent = new Intent();
         intent.putExtra(ScanConstants.SCANNED_RESULT, path);
-        intent.putExtra("id", getIntent().getStringExtra("id"));
+        intent.putExtra("imageId", getIntent().getStringExtra("imageId"));
+        intent.putExtra("bolId", getIntent().getStringExtra("bolId"));
 
         setResult(Activity.RESULT_OK, intent);
         //bitmap.recycle();

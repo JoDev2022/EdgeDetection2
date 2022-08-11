@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = new Intent(this, ScanActivity.class);
         intent.putExtra("id", "1");
+        intent.putExtra("bolId", "2");
         startActivityForResult(intent, REQUEST_CODE);
     }
 
