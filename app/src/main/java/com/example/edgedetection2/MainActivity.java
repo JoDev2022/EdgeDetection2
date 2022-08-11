@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private void startScan() {
 
         Intent intent = new Intent(this, ScanActivity.class);
-        intent.putExtra("id", "1");
+        intent.putExtra("imageId", "1");
         intent.putExtra("bolId", "2");
         startActivityForResult(intent, REQUEST_CODE);
     }
@@ -49,10 +49,11 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == REQUEST_CODE) {
             if(resultCode == Activity.RESULT_OK) {
                 if(null != data && null != data.getExtras()) {
-                    String test = data.getStringExtra("id");
+                    String test = data.getStringExtra("imageId");
+                    String test2 = data.getStringExtra("bolId");
                     String filePath = data.getExtras().getString(ScanConstants.SCANNED_RESULT);
                     Bitmap baseBitmap = ScanUtils.decodeBitmapFromFile(filePath, ScanConstants.IMAGE_NAME);
-                    scannedImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+//                    scannedImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
                     scannedImageView.setImageBitmap(baseBitmap);
                 }
             } else if(resultCode == Activity.RESULT_CANCELED) {
