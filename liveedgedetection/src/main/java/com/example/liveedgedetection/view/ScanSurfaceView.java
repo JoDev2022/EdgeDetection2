@@ -129,7 +129,9 @@ public class ScanSurfaceView extends FrameLayout implements SurfaceHolder.Callba
             parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_AUTO);
         }
 
-        Camera.Size size = ScanUtils.determinePictureSize(camera, parameters.getPreviewSize());
+        // Change made based on https://github.com/adityaarora1/LiveEdgeDetection/issues/17
+        // Camera.Size size = ScanUtils.determinePictureSize(camera, parameters.getPreviewSize());
+        Camera.Size size = ScanUtils.getOptimalPictureSize(camera, width, height, parameters.getPreviewSize());
         parameters.setPictureSize(size.width, size.height);
         parameters.setPictureFormat(ImageFormat.JPEG);
 
