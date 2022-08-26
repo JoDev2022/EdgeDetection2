@@ -131,7 +131,9 @@ public class ScanSurfaceView extends FrameLayout implements SurfaceHolder.Callba
 
         // Change made based on https://github.com/adityaarora1/LiveEdgeDetection/issues/17
         // Camera.Size size = ScanUtils.determinePictureSize(camera, parameters.getPreviewSize());
-        Camera.Size size = ScanUtils.getOptimalPictureSize(camera, width, height, parameters.getPreviewSize());
+        // Camera.Size size = ScanUtils.getOptimalPictureSize(camera, width, height, parameters.getPreviewSize());
+        List<Camera.Size> supportedSizes = parameters.getSupportedPictureSizes();
+        Camera.Size size = supportedSizes.get(0);
         parameters.setPictureSize(size.width, size.height);
         parameters.setPictureFormat(ImageFormat.JPEG);
 
